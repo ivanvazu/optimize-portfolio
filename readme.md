@@ -39,3 +39,11 @@ La solicitud `POST` espera los siguientes parámetros en formato `multipart/form
     "...": "..."
   }
 }
+```
+
+## Método de Optimización
+
+Se utilizó el modelo de optimización de portafolios de **Markowitz**, centrándonos en la **minimización de la volatilidad (riesgo)** del portafolio.
+
+**¿Por qué se eligió?** Para principiantes, la volatilidad es una medida de riesgo intuitiva. El modelo de Markowitz es un concepto fundamental y ampliamente estudiado, que además favorece la diversificación, un principio clave para gestionar el riesgo. Es un excelente punto de partida para entender la optimización de portafolios.
+
