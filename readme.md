@@ -1,6 +1,6 @@
 # Servicio de Optimización de Portafolios (Modelo de Markowitz)
 
-Este servicio en Python, construido con Flask, permite a los usuarios estimar la composición óptima de un portafolio de activos financieros basándose en sus retornos históricos diarios y ciertas restricciones de riesgo.
+Este servicio en Python, construido con FastAPI, permite a los usuarios estimar la composición óptima de un portafolio de activos financieros basándose en sus retornos históricos diarios y ciertas restricciones de riesgo.
 
 ## Funcionalidad
 
