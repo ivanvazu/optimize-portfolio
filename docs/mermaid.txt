@@ -1,0 +1,43 @@
+graph TB
+    A[Cliente Web Aplicacion] --> B(API Gateway)
+    B -- HTTPS --> C{Tamaño del CSV?}
+    C -- Pequeño --> D(Lambda Function)
+    C -- Grande --> E(S3 Bucket)
+    E -- Carga CSV --> F(API Gateway - S3 URL)
+    F -- HTTPS --> G(Lambda Function - S3 URL)
+    D -- Python (pandas, numpy, scipy) --> H{Optimizacion Markowitz}
+    G -- Python (pandas, numpy, scipy, boto3) --> I{Descarga CSV de S3 -> Optimizacion Markowitz}
+    H -- JSON --> D
+    I -- JSON --> G
+
+    D --> C
+    G --> C
+    C --> B
+    B --> A
+
+    subgraph AWS Serverless
+        direction TB
+        B -- Definido en template.yaml (SAM) --> AWS
+        D -- Definido en template.yaml (SAM) --> AWS
+        G -- Definido en template.yaml (SAM) --> AWS
+        E -- Creado (fuera de SAM o definido en template.yaml) --> AWS
+    end
+
+    subgraph AWS CloudFormation [SAM Deployment]
+        direction LR
+        AWS[AWS Cloud] -- Despliega --> B
+        AWS -- Despliega --> D
+        AWS -- Despliega --> G
+        AWS -- Gestiona --> E
+    end
+
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style B fill:#ccf,stroke:#333,stroke-width:2px
+    style D fill:#9cf,stroke:#333,stroke-width:2px
+    style G fill:#9cf,stroke:#333,stroke-width:2px
+    style H fill:#f99,stroke:#333,stroke-width:2px
+    style I fill:#f99,stroke:#333,stroke-width:2px
+    style E fill:#ffe,stroke:#333,stroke-width:2px
+    style C fill:#ddd,stroke:#333,stroke-width:2px
+    style F fill:#ccf,stroke:#333,stroke-width:2px
+    style AWS fill:#bbb,stroke:#333,stroke-width:2px

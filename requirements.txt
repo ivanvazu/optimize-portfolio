@@ -1,7 +1,7 @@
-Flask
+fastapi
+uvicorn
 pandas
 numpy
 scipy
-gunicorn
 pydantic
-typing
+python-multipart
